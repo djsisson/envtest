@@ -21,7 +21,7 @@ RUN \
 # Rebuild the source code only when needed
 
 COPY src ./src
-#COPY public ./public
+COPY public ./public
 COPY next.config.mjs .
 COPY tsconfig.json .
 #ARG NEXT_PUBLIC_TEST
@@ -49,7 +49,7 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-#COPY --from=builder /app/public ./public
+COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
